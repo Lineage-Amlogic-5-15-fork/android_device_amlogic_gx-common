@@ -1,7 +1,7 @@
 on early-init
     loglevel 3
 
-    exec_background u:r:modprobe:s0 -- /system/bin/modprobe -a -d /system_dlkm/lib/modules --all=/system_dlkm/lib/modules/modules.load
+    exec_background u:r:modprobe:s0 -- /system/bin/modprobe -a -d /system/lib/modules --all=/system/lib/modules/modules.load
     exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules --all=/vendor/lib/modules/modules.load
 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance

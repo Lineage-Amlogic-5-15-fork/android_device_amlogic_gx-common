@@ -1,12 +1,3 @@
-## Dynamic partitions
-odm                   /odm                erofs     ro                                                               wait,avb,logical,first_stage_mount
-product               /product            ext4      ro,barrier=1                                                     wait,avb,logical,first_stage_mount
-system                /system             ext4      ro,barrier=1                                                     wait,avb=vbmeta,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey"
-system_dlkm           /system_dlkm        erofs     ro                                                               wait,avb,logical,first_stage_mount
-system_ext            /system_ext         ext4      ro,barrier=1                                                     wait,avb,logical,first_stage_mount
-vendor                /vendor             erofs     ro                                                               wait,avb,logical,first_stage_mount
-vendor_dlkm           /vendor_dlkm        erofs     ro                                                               wait,avb,logical,first_stage_mount
-
 ## Block devices
 /dev/block/boot       /boot               emmc      defaults                                                         recoveryonly
 /dev/block/cache      /cache              ext4      noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable
@@ -14,9 +5,13 @@ vendor_dlkm           /vendor_dlkm        erofs     ro                          
 /dev/block/dtbo       /dtbo               emmc      defaults                                                         defaults
 /dev/block/metadata   /metadata           ext4      noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable,first_stage_mount
 /dev/block/misc       /misc               emmc      defaults                                                         defaults
+/dev/block/odm        /odm                erofs     ro                                                               wait,avb,first_stage_mount
 /dev/block/param      /mnt/vendor/param   ext4      noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,quota,formattable,nofail
+/dev/block/product    /product            ext4      ro,barrier=1                                                     wait,avb,first_stage_mount
 /dev/block/recovery   /recovery           emmc      defaults                                                         recoveryonly
+/dev/block/system     /system             ext4      ro,barrier=1                                                     wait,avb=vbmeta,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
 /dev/block/tee        /mnt/vendor/tee     ext4      noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable,nofail
+/dev/block/vendor     /vendor             erofs     ro                                                               wait,avb,first_stage_mount
 
 ## Virtual devices
 /dev/block/loop       auto                loop      defaults                                                         voldmanaged=loop:auto
