@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/amlogic/g12-common
+COMMON_PATH := device/amlogic/gx-common
 
 ## Architecture
 TARGET_CPU_VARIANT_RUNTIME := cortex-a53
@@ -15,16 +15,16 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 ## Kernel
 BOARD_KERNEL_CMDLINE := androidboot.dynamic_partitions=true use_uvm=1
 ifeq ($(TARGET_BOOTDEVICE),usb)
-  BOARD_KERNEL_CMDLINE += androidboot.boot_devices=ff500000.dwc3
+  BOARD_KERNEL_CMDLINE += androidboot.boot_devices=c9000000.dwc3
 else ifeq ($(TARGET_BOOTDEVICE),sdcard)
-  BOARD_KERNEL_CMDLINE += androidboot.boot_devices=ffe05000.sd2
+  BOARD_KERNEL_CMDLINE += androidboot.boot_devices=d0072000.sd
 else
-  BOARD_KERNEL_CMDLINE += androidboot.boot_devices=ffe07000.emmc
+  BOARD_KERNEL_CMDLINE += androidboot.boot_devices=d0074000.emmc
 endif
 
 ifeq ($(WITH_CONSOLE),true)
   BOARD_KERNEL_CMDLINE += console=ttyS0,115200 no_console_suspend ignore_loglevel
-  BOARD_KERNEL_CMDLINE += earlycon=aml_uart,0xff803000
+  BOARD_KERNEL_CMDLINE += earlycon=aml_uart,0xc81004c0
 endif
 
 TARGET_KERNEL_VERSION ?= 5.15
@@ -48,7 +48,7 @@ TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 ## Recovery
-TARGET_RECOVERY_DEVICE_DIRS += vendor/amlogic/g12-common/proprietary
+TARGET_RECOVERY_DEVICE_DIRS += vendor/amlogic/gx-common/proprietary
 ifneq ($(strip $(TARGET_BOOTDEVICE)),)
   TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/fstab.$(TARGET_BOOTDEVICE).amlogic
 else
@@ -68,4 +68,4 @@ VENDOR_SECURITY_PATCH := 2026-03-01
 include device/amlogic/common/BoardConfigAmlogic.mk
 
 ## Include the common proprietary BoardConfig makefile
-include vendor/amlogic/g12-common/BoardConfigVendor.mk
+include vendor/amlogic/gx-common/BoardConfigVendor.mk

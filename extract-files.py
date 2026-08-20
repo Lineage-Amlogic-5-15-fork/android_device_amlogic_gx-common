@@ -19,7 +19,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/amlogic/g12-common',
+    'device/amlogic/gx-common',
 ]
 
 blob_fixups: blob_fixups_user_type = {
@@ -45,7 +45,7 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'g12-common',
+    'gx-common',
     'amlogic',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
