@@ -7,7 +7,6 @@
 /dev/block/misc       /misc               emmc      defaults                                                         defaults
 /dev/block/odm        /odm                erofs     ro                                                               wait,first_stage_mount
 /dev/block/param      /mnt/vendor/param   ext4      noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,quota,formattable,nofail
-/dev/block/product    /product            ext4      ro,barrier=1                                                     wait,first_stage_mount
 /dev/block/recovery   /recovery           emmc      defaults                                                         recoveryonly
 /dev/block/system     /system             ext4      ro,barrier=1                                                     wait,first_stage_mount
 /dev/block/vendor     /vendor             erofs     ro                                                               wait,first_stage_mount
