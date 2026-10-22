@@ -1,0 +1,11 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_shared {
+    name: "libamgralloc_ext_shim",
+    srcs: ["amgralloc_ext_shim.cpp"],
+    header_libs: ["libcutils_headers"],
+    vendor: true,
+}
