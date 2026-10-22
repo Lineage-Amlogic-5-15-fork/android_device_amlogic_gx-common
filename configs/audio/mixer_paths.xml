@@ -1,4 +1,6 @@
 <mixer>
+  <ctl name="AIU HDMI CTRL SRC" value="I2S" />
+
   <!-- dummy xml conf, do nothing here -->
   <path name="speaker">
   </path>
