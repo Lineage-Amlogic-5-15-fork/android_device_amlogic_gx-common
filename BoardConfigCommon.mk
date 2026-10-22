@@ -23,7 +23,7 @@ else
 endif
 
 ifeq ($(WITH_CONSOLE),true)
-  BOARD_KERNEL_CMDLINE += console=ttyS0,115200 no_console_suspend ignore_loglevel
+  BOARD_KERNEL_CMDLINE += console=ttyS0,115200 no_console_suspend ignore_loglevel printk.devkmsg=on
   BOARD_KERNEL_CMDLINE += earlycon=aml_uart,0xc81004c0
 endif
 
