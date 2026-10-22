@@ -7,7 +7,7 @@ on early-init
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
 
 on init
-    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules mali_kbase
+    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules mali
 
 on post-fs-data
     insmod /vendor/lib/modules/aml_hardware_dmx.ko
