@@ -37,10 +37,14 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.media.audio.common.types-V2-cpp.so', 'android.media.audio.common.types-V4-cpp.so'),
     (
         'vendor/lib/hw/camera.amlogic.so',
-        'vendor/lib/hw/hwcomposer.amlogic.so',
-        'vendor/lib/libmeson_display_service.so',
         'vendor/lib/libscreencontrolservice.so'
     ): blob_fixup()
+        .add_needed('libui_shim.so'),
+    'vendor/lib/hw/hwcomposer.amlogic.so': blob_fixup()
+        .add_needed('libamgralloc_ext_shim.so')
+        .add_needed('libui_shim.so'),
+    'vendor/lib/libmeson_display_service.so': blob_fixup()
+        .add_needed('libbase_shim.so')
         .add_needed('libui_shim.so'),
 }  # fmt: skip
 
